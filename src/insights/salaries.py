@@ -1,7 +1,13 @@
 from typing import Union, List, Dict
+from src.insights import jobs
 
 
 def get_max_salary(path: str) -> int:
+    data = jobs.read(path)
+    salaries = [int(row['max_salary'])
+                for row in data
+                if row['max_salary'].isnumeric()]
+    return max(salaries)
     """Get the maximum salary of all jobs
 
     Must call `read`
