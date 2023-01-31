@@ -28,6 +28,7 @@ def read(path: str) -> List[Dict]:
 
 
 def get_unique_job_types(path: str) -> List[str]:
+
     data = read(path)
     unic_job_type = []
     for row in data:
