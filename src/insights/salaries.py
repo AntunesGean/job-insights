@@ -3,6 +3,7 @@ from src.insights import jobs
 
 
 def get_max_salary(path: str) -> int:
+
     data = jobs.read(path)
     salaries = [int(row['max_salary'])
                 for row in data
@@ -26,6 +27,12 @@ def get_max_salary(path: str) -> int:
 
 
 def get_min_salary(path: str) -> int:
+
+    data = jobs.read(path)
+    salaries = [int(row['min_salary'])
+                for row in data
+                if row['min_salary'].isnumeric()]
+    return min(salaries)
     """Get the minimum salary of all jobs
 
     Must call `read`
